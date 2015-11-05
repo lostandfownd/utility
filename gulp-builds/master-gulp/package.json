@@ -1,0 +1,37 @@
+{
+  "dependencies": {
+    "gulp": "*",
+    "gulp-autoprefixer": "*",
+    "gulp-html-validator": "0.0.5",
+    "gulp-image-optimization": "^0.1.3",
+    "gulp-plumber": "*",
+    "gulp-rev-collector": "^0.1.4",
+    "gulp-rev-manifest-replace": "0.0.5",
+    "gulp-ruby-sass": "*",
+    "gulp-sass": "*",
+    "gulp-scss-lint": "^0.1.10",
+    "gulp-sourcemaps": "*",
+    "imagemin-optipng": "^4.2.0",
+    "imagemin-pngquant": "^4.0.0",
+    "vinyl-paths": "^1.0.0"
+  },
+  "devDependencies": {
+    "del": "^1.1.1",
+    "gulp-cached": "^1.0.4",
+    "gulp-concat": "^2.5.2",
+    "gulp-cssmin": "^0.1.6",
+    "gulp-filesize": "0.0.6",
+    "gulp-gzip": "^1.0.0",
+    "gulp-htmlhint": "0.0.9",
+    "gulp-htmlmin": "^1.1.1",
+    "gulp-if": "^1.2.5",
+    "gulp-imagemin": "^2.2.1",
+    "gulp-load-plugins": "^0.8.0",
+    "gulp-rename": "^1.2.0",
+    "gulp-rev": "^3.0.1",
+    "gulp-uglify": "^1.1.0",
+    "gulp-useref": "^1.1.1",
+    "gulp-webserver": "^0.9.0",
+    "run-sequence": "^1.0.2"
+  }
+}
