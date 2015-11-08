@@ -1,0 +1,6 @@
+
+# ignore os files
+.DS_Store
+
+#ignore node modules
+node_modules/**/*

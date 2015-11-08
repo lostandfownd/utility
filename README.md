@@ -8,4 +8,8 @@ Gulp builds and other tools
 
 #### What builds i have for now is :
 * Master Gulp - This is something i built long  ago needs fix and breakdown
+<<<<<<< HEAD
 * Light Gulp  - This build is a light functional build for small test projects
+=======
+* Light Gulp  - This build is a light functional build for small test projects 
+>>>>>>> 308b00f58a7f734ca6855bf6bba13565958eef14
