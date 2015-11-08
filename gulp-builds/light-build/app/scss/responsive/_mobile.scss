@@ -1,0 +1,18 @@
+@media (max-width: 640px) {
+
+    .math { height: 100% !important; }
+    .mixins { height: 100% !important; }
+}
+
+@media (max-width: 560px) {
+    .col {
+        @include span(12);
+    } 
+}
+
+@media (max-width: 400px) {
+    .col {
+        @include span(12);
+       
+    } 
+}

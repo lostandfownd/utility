@@ -1,0 +1,35 @@
+/* ================================================
+			##Table of contents##
+			#####################
+
+
+// This needs rework !!
+
+
+================================================ */
+
+	//////////////////////	Automation
+
+	@import 'utilities/variables';
+	@import 'automation/font_calc';
+	@import 'automation/project_mixins';
+	@import 'automation/project_placeholder';
+
+	//////////////////////	Global Utilities
+	@import 'responsive/susy/susy';
+	@import 'responsive/grid_config';
+	@import 'global';
+
+	//////////////////////	Patten Elements
+	@import 'patterns/atoms';
+	@import 'patterns/molecules';
+	@import 'patterns/organisms';
+	@import 'patterns/shame';
+
+	//////////////////////	Grid Core
+	@import 'responsive';
+
+	//////////////////////	Vendors
+	@import 'vendor/font-awesome/font-awesome';
+
+////////////////////////////////////////////////// IMPORTS END

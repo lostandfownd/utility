@@ -1,0 +1,57 @@
+/* ======================================================
+	Info Box(Jumbotron)
+====================================================== */
+
+
+.info_box {
+	@include span(12 of 12);
+
+
+
+		padding: 40px 2%;
+		margin-top: 20px;
+		margin-bottom: 20px;
+		z-index: 20;
+		text-align: left;
+
+		h2 {
+			display: block;
+			margin-bottom: rem-calc(30);
+			text-align: center;
+			color: $outerSpace;
+			font-family: Helvetica;
+			font-size: rem-calc(40px);
+			line-height: rem-calc(22);
+		}
+
+		.tools {
+			display: block;
+			padding: 10px;
+			margin: 20px auto;
+		}
+
+		h3 {
+			margin-bottom: rem-calc(10px);
+			color: $outerSpace;
+			font-family: Helvetica;
+			font-weight: bold;
+			line-height: rem-calc(20);
+		}
+
+		p {
+			color: $outerSpace;
+			font-family: Helvetica;
+			font-size: rem-calc(18);
+		}
+		em {
+			color: $caribbeanGreen;
+			font-style: normal;
+		}
+
+		.tool-elements {
+			display: block;
+			width: 40%;
+			margin: 20px auto;
+		}
+}
+
