@@ -39,12 +39,12 @@ var errorHandler = function(err) {
     html: './app/*.html'
 },
   prod = {
-    dist: './production/',
-    css: './prod/css',
-    images: './prod/img',
-    js: './prod/js',
-    fonts: './prod/font',
-    vendorJs: './prod/js/vendor'
+    prod: './production/',
+    css: './production/css',
+    images: './production/img',
+    js: './production/js',
+    fonts: './production/font',
+    vendorJs: './production/js/vendor'
 },
   clean = {
     css: './prod/css',
