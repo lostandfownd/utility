@@ -23,8 +23,7 @@ var errorHandler = function(err) {
   gutil.log(gutil.colors.red('Error'), err.message);
 },
 
-// paths + destinations to what i need
-// Should be put in a config file and taken from there
+// Destinations and paths
   bower = {
     bower: './bower_components',
     vendorJs: './bower_components/**/*.js'
@@ -39,7 +38,7 @@ var errorHandler = function(err) {
     fonts: './app/font',
     html: './app/*.html'
 },
-  dist = {
+  prod = {
     dist: './dist/',
     css: './dist/css',
     images: './dist/img',
@@ -53,7 +52,6 @@ var errorHandler = function(err) {
 }
 
 //// Webserver
-// Had to be tweked
   gulp.task('webserver', function() {
     gulp.src('./app/')
       .pipe(server({
@@ -153,17 +151,17 @@ var errorHandler = function(err) {
 
 ///// Watch tasks
   gulp.task('watch', function () {
-      // .scss files
+      //  watch .scss files
       var sassWatcher = gulp.watch(dev.sass, ['libsass']);
           sassWatcher.on('change', function(event) {
               console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
           });
 
-      // .html files
-      gulp.watch(dev.html, ['html']);
-      // bower js
+      // watch .html files (for now it's not usefull)
+      // gulp.watch(dev.html, ['html']);
+      // watch bower js
       gulp.watch(bower.bower, ['bowerJs']);
-      // image files
+      // watch image files
       gulp.watch(dev.images, ['imagemin']);
       // .js files < we dont want to rev them >
       // gulp.watch(dev.js, ['cleanJs', 'rev-scripts']);
@@ -172,11 +170,8 @@ var errorHandler = function(err) {
   });
 
 ///// General tasks
-  // Build
-  gulp.task('build', ['dist-cluster']);
-
-  // Development
+  // Development  (development run brute tasks)
   gulp.task('development', ['watch', 'serve']);
 
-  // Production
+  // Production (optimize the files make them production ready)
   gulp.task('production', ['htmloptimize', 'gzip']);
