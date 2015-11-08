@@ -4,3 +4,6 @@
 
 #ignore node modules
 node_modules/**/*
+
+#ignore the app template
+app/**/*
