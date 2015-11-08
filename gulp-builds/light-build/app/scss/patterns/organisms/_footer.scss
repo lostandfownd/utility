@@ -1,0 +1,27 @@
+/* ===========================================
+	#Footer
+=============================================*/
+
+/**
+*	Here is the footer module 
+**/
+
+
+.main-footer {
+    display: block;
+    height: 76px;
+    color: $footer-text;
+    background: $footer-bg;
+    border-top: 4px solid $footer-borderTop; 
+
+    .copywrite {
+        padding: {
+            top: 20px;
+            bottom: 20px;
+        } 
+    }
+
+    a {
+        color: $white;
+    }
+}

@@ -1,0 +1,23 @@
+/* ===========================================
+	#Header
+=============================================*/
+
+/**
+*
+*	Here is the main header 
+*
+**/
+
+.main-header {
+    background: $header-bg;
+    border-bottom: 4px solid $header-borderBot;
+    padding: {
+        top: 10px;
+        bottom: 10px;
+    }
+
+}
+
+// .header-content {
+//      @include span(12);
+// }

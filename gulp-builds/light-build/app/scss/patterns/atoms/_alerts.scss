@@ -1,0 +1,35 @@
+/* ==========================================
+    #Alerts 
+============================================*/
+
+
+
+%alert {
+    @include border-radius(all);
+    box-shadow: 2px 2px 2px #000;
+    display: block;
+    margin: 10px auto;
+    padding: 8px 14px;
+
+    color: #fff;
+
+}
+
+
+
+.warning {
+        @extend %alert;
+        background: $yellow-500;
+}
+
+
+.error {
+        @extend %alert;
+        background: $red-500;
+}
+
+
+.success {
+        @extend %alert;
+        background: $green-500;
+}

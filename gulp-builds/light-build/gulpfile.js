@@ -23,8 +23,7 @@ var errorHandler = function(err) {
   gutil.log(gutil.colors.red('Error'), err.message);
 },
 
-// paths + destinations to what i need
-// Should be put in a config file and taken from there
+// Destinations and paths
   bower = {
     bower: './bower_components',
     vendorJs: './bower_components/**/*.js'
@@ -32,31 +31,30 @@ var errorHandler = function(err) {
   dev = {
     dev: './app',
     css: './app/css/*.css',
-    sass: './app/sass/**/*.scss',
+    sass: './app/scss/**/*.scss',
     vendorJs: './app/js/vendor/*.js',
     js: './app/js/*.js',
     images: './app/img/*',
     fonts: './app/font',
     html: './app/*.html'
 },
-  dist = {
-    dist: './dist/',
-    css: './dist/css',
-    images: './dist/img',
-    js: './dist/js',
-    fonts: './dist/font',
-    vendorJs: './dist/js/vendor'
+  prod = {
+    dist: './production/',
+    css: './prod/css',
+    images: './prod/img',
+    js: './prod/js',
+    fonts: './prod/font',
+    vendorJs: './prod/js/vendor'
 },
   clean = {
-    css: './dist/css',
-    js: './dist/js/*.js'
+    css: './prod/css',
+    js: './prod/js/*.js'
 }
 
 //// Webserver
-// Had to be tweked
   gulp.task('webserver', function() {
     gulp.src('./app/')
-      .pipe(server({
+      .pipe(webserver({
         port:'9090',
         livereload: true,
         open: true
@@ -86,9 +84,9 @@ var errorHandler = function(err) {
               use: [pngquant()]
           }))
           .pipe($.filesize())
-          .pipe(gulp.dest(dist.images));
+          .pipe(gulp.dest(prod.images));
   });
-  // html minification
+  // html minification (offline)
   gulp.task('htmloptimize', function () {
       return gulp.src(dev.html)
         .pipe($.htmlmin({
@@ -98,85 +96,72 @@ var errorHandler = function(err) {
   });
 
 
-///// Build tasks
+///// Production tasks
   // html copy files
  gulp.task('html', function () {
    return gulp.src(dev.html)
-     .pipe(gulp.dest(dist.dist))
+     .pipe(gulp.dest(prod.prod))
      .pipe($.filesize())
  });
  //bower script helper
   gulp.task('bowerJs', function () {
     gulp.src(bower.vendorJs)
-    .pipe(gulp.dest(dist.vendorJs))
+    .pipe(gulp.dest(prod.vendorJs))
   });
   // js vendor copy files
   gulp.task('vendor-copy', function () {
     gulp.src(dev.vendorJs)
-      .pipe(gulp.dest(dist.vendorJs))
+      .pipe(gulp.dest(prod.vendorJs))
   });
   // font copy
   gulp.task('fonts', function () {
     gulp.src(dev.fonts)
-      .pipe(gulp.dest(dist.fonts))
+      .pipe(gulp.dest(prod.fonts))
   });
   // cluster copy
-  gulp.task('dist-cluster', function () {
+  gulp.task('prod-cluster', function () {
     runSequence('html', 'imagemin', function () {
     return gulp.src(dev.vendorJs)
-    .pipe(gulp.dest(dist.vendorJs))
+    .pipe(gulp.dest(prod.vendorJs))
     .on('end', function () {
       return  gulp.src(dev.fonts)
-        .pipe(gulp.dest(dist.fonts))
+        .pipe(gulp.dest(prod.fonts))
     })
     .on('end', function () {
       return  gulp.src(dev.css)
-        .pipe(gulp.dest(dist.css))
+        .pipe(gulp.dest(prod.css))
       })
     // copy any .txt files
     .on('end', function () {
       return gulp.src('./app/*.txt')
-      .pipe(gulp.dest(dist.dist))
+      .pipe(gulp.dest(prod.prod))
       })
     // copy any .xml files
     .on('end', function () {
       return gulp.src('./app/*.xml')
-      .pipe(gulp.dest(dist.dist))
+      .pipe(gulp.dest(prod.prod))
       })
     // copy any .xml files
     .on('end', function () {
       return gulp.src('./app/.htaccess')
-      .pipe(gulp.dest(dist.dist))
+      .pipe(gulp.dest(prod.prod))
       })
     });
   });
 
 ///// Watch tasks
+// Only need the scss to be watched
   gulp.task('watch', function () {
-      // .scss files
+      //  watch .scss files
       var sassWatcher = gulp.watch(dev.sass, ['libsass']);
           sassWatcher.on('change', function(event) {
               console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
           });
-
-      // .html files
-      gulp.watch(dev.html, ['html']);
-      // bower js
-      gulp.watch(bower.bower, ['bowerJs']);
-      // image files
-      gulp.watch(dev.images, ['imagemin']);
-      // .js files < we dont want to rev them >
-      // gulp.watch(dev.js, ['cleanJs', 'rev-scripts']);
-      // font files
-      gulp.watch(dev.fonts, ['fonts']);
   });
 
 ///// General tasks
-  // Build
-  gulp.task('build', ['dist-cluster']);
+  // Development  (development run brute tasks)
+  gulp.task('development', ['watch', 'webserver', 'libsass']);
 
-  // Development
-  gulp.task('development', ['watch', 'serve']);
-
-  // Production
-  gulp.task('production', ['htmloptimize', 'gzip']);
+  // Production (optimize the files make them production ready)
+  gulp.task('production', ['imagemin', 'prod-cluster']);

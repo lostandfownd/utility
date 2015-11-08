@@ -1,0 +1,16 @@
+/* ==============================================
+	#Main Content
+===============================================*/
+
+/**
+*	Here is the main content block element
+**/
+
+.main-container { 
+    display: block;
+    padding: {
+        top: 40px;
+        bottom: 40px;
+    }
+    background: $mainContent-bg;
+}

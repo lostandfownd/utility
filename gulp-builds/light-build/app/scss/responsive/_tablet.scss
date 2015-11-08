@@ -1,0 +1,36 @@
+@media (max-width: 980px) {
+
+    .menu-trigger {
+        display: initial;
+    } 
+
+    .nav {
+        display: none;
+    }
+
+    .col {
+        .structure,
+        .math,
+        .mixins { 
+            @include span(12 of 12);  
+        }
+    }
+}
+@media (max-width: 760px) {
+
+    .col {
+        @include span(12 of 12);
+    } 
+    .n-col {
+        @include span(2 of 8);
+    }
+
+    .main-container {
+        height: auto;
+    }
+
+    .info_box h2 {
+        font-size: em-calc(18);
+    }
+    
+}

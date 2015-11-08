@@ -1,0 +1,57 @@
+///////////////////////////////////////////////
+//	#0.0 Functions
+//////////////////////////////////////////////
+
+
+//// Strip the units from a value
+// ----------------------------
+
+// Strips value units
+@function strip-units($value) {
+	@return $value / ($value * 0 + 1);
+}
+
+
+//// Calculate rems from a px value
+// ------------------------------
+
+@function rem-calc($px, $base-val: $base-font-size) {
+	@if not unitless($px) {
+		$px: strip-units($px);
+	}
+	@if not unitless($base-val) {
+		$base-val: strip-units($base-val);
+	}
+	@return ($px / $base-val) * 1rem;
+}
+
+
+//// Calculate ems from a px value
+// ------------------------------
+
+@function em-calc($px, $base-val: $base-font-size) {
+	@if not unitless($px) {
+		$px: strip-units($px);
+	}
+	@if not unitless($base-val) {
+		$base-val: strip-units($base-val);
+	}
+	@return ($px / $base-val) * 1em;
+}
+
+
+//// Mixes white with the current color 
+//-------------------------------------
+
+@function tint($color, $percentage) {
+	@return mix($color, white, $percentage);
+}
+
+
+//// Mixes Black with the current color 
+//--------------------------------------
+
+                          
+@function shade($color, $percentage) {
+	@return mix($color, black, $percentage) 	
+}
