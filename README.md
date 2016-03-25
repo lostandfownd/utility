@@ -11,3 +11,8 @@ Gulp builds and other tools
 
 * Light Gulp  - This build is a light functional build for small test projects
   - for now only this one works , and am making it work flawless 
+  - 
+  
+** These builds have gone through some change and i will update it 
+- the new ideea is to make them versatile and do more cool stuff than compile sass 
+- the second new ideea is to make them so gulp beginners understand how they are build and how to build their own in the future    
