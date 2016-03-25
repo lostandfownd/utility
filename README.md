@@ -1,4 +1,9 @@
-# Utility
+# Utility Repo 
+
+Utilities will be added here as i build them and consider them worthy to be open source
+
+
+
 Gulp builds and other tools
 * in the near future i intend to fix my builds, diversify them, add new tools
 
